@@ -27,15 +27,15 @@ jobs:
     runs-on: ubuntu-latest
     # ขั้นตอนย่อยๆ
     steps:
-      # 1. เช็คเอาท์โค้ดจาก repository
+      # 1. เช็คเอาท์โค้ดจาก repository (อัปเดตเวอร์ชัน)
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      # 2. ติดตั้ง Node.js
+      # 2. ติดตั้ง Node.js (อัปเดตเวอร์ชัน)
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: '18' # หรือเวอร์ชันที่คุณใช้
+          node-version: '18'
           cache: 'npm'
 
       # 3. ติดตั้ง Dependencies ของโปรเจกต์
@@ -46,17 +46,17 @@ jobs:
       - name: Build Project
         run: npm run build
 
-      # 5. ตั้งค่าสำหรับ GitHub Pages
+      # 5. ตั้งค่าสำหรับ GitHub Pages (อัปเดตเวอร์ชัน)
       - name: Setup Pages
-        uses: actions/configure-pages@v3
+        uses: actions/configure-pages@v5
 
-      # 6. อัปโหลดไฟล์ที่ build แล้ว (จากโฟลเดอร์ dist/spa)
+      # 6. อัปโหลดไฟล์ที่ build แล้ว (อัปเดตเวอร์ชัน)
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist/spa' # ตรวจสอบให้แน่ใจว่า path นี้ถูกต้องสำหรับ Quasar project
+          path: './dist/spa'
 
-      # 7. Deploy ไปยัง GitHub Pages
+      # 7. Deploy ไปยัง GitHub Pages (อัปเดตเวอร์ชัน)
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v4
